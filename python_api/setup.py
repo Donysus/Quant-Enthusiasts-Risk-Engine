@@ -10,14 +10,18 @@ ext_modules = [
     Extension(
         'quant_risk_engine',
         sources=[
-            'pybind_wrapper.cpp',
-            '../cpp_engine/src/Instrument.cpp',
-            '../cpp_engine/src/MarketData.cpp',
-            '../cpp_engine/src/Portfolio.cpp',
-            '../cpp_engine/src/RiskEngine.cpp',
-            '../cpp_engine/src/utils/BlackScholes.cpp'
+            '../cpp_engine/apps/main.cpp',
+            '../cpp_engine/libraries/python_interface/src/pybind_wrapper.cpp',
+            '../cpp_engine/libraries/qe_risk_engine/src/Portfolio.cpp',
+            '../cpp_engine/libraries/qe_risk_engine/src/RiskEngine.cpp',
+            '../cpp_engine/libraries/qe_risk_engine/src/BlackScholes.cpp',
+            '../cpp_engine/libraries/qe_risk_engine/src/BinomialTree.cpp',
+            '../cpp_engine/libraries/qe_risk_engine/src/JumpDiffusion.cpp',
+            '../cpp_engine/libraries/qe_risk_engine/src/ImpliedVolatilitySurface.cpp',
+            '../cpp_engine/libraries/qe_risk_engine/src/MarketData.cpp',
+            "../cpp_engine/libraries/qe_risk_engine/src/Instrument.cpp"
         ],
-        include_dirs=[get_pybind_include(), '../cpp_engine/src'],
+        include_dirs=[pybind11.get_include(), '../cpp_engine/src'],
         language='c++',
         extra_compile_args=cpp_args,
     ),
@@ -25,9 +29,8 @@ ext_modules = [
 
 setup(
     name='quant_risk_engine',
-    version='1.0',
+    version='3.0',
     description='Python bindings for the Quant Enthusiasts Risk Engine',
+    author='Quant Enthusiasts',
     ext_modules=ext_modules,
-    setup_requires=['pybind11>=2.0'],
-    install_requires=['pybind11>=2.0'],
 )

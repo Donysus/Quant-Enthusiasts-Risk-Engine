@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Metadata-Version: 2.1
 Name: quant-risk-engine
 Version: 1.0
@@ -8,3 +9,10 @@ Platform: UNKNOWN
 
 UNKNOWN
 
+=======
+Metadata-Version: 2.4
+Name: quant_risk_engine
+Version: 1.0
+Summary: Python bindings for the Quant Enthusiasts Risk Engine
+Dynamic: summary
+>>>>>>> f62f2a1a1485ca647553a4d730f1e61492d3d10d
