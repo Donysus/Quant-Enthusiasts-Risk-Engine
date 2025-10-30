@@ -10,7 +10,6 @@ ext_modules = [
     Extension(
         'quant_risk_engine',
         sources=[
-            '../cpp_engine/apps/main.cpp',
             '../cpp_engine/libraries/python_interface/src/pybind_wrapper.cpp',
             '../cpp_engine/libraries/qe_risk_engine/src/Portfolio.cpp',
             '../cpp_engine/libraries/qe_risk_engine/src/RiskEngine.cpp',
@@ -21,7 +20,7 @@ ext_modules = [
             '../cpp_engine/libraries/qe_risk_engine/src/MarketData.cpp',
             "../cpp_engine/libraries/qe_risk_engine/src/Instrument.cpp"
         ],
-        include_dirs=[pybind11.get_include(), '../cpp_engine/src'],
+        include_dirs=[get_pybind_include(), '../cpp_engine/libraries/qe_risk_engine/includes', '../cpp_engine/libraries/python_interface/includes'],
         language='c++',
         extra_compile_args=cpp_args,
     ),
