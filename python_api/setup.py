@@ -1,5 +1,8 @@
 from setuptools import setup, Extension
-import pybind11
+
+def get_pybind_include():
+    import pybind11
+    return pybind11.get_include()
 
 cpp_args = ['-std=c++17', '-Wall', '-pedantic']
 
@@ -14,7 +17,7 @@ ext_modules = [
             '../cpp_engine/src/RiskEngine.cpp',
             '../cpp_engine/src/utils/BlackScholes.cpp'
         ],
-        include_dirs=[pybind11.get_include(), '../cpp_engine/src'],
+        include_dirs=[get_pybind_include(), '../cpp_engine/src'],
         language='c++',
         extra_compile_args=cpp_args,
     ),
@@ -25,4 +28,6 @@ setup(
     version='1.0',
     description='Python bindings for the Quant Enthusiasts Risk Engine',
     ext_modules=ext_modules,
+    setup_requires=['pybind11>=2.0'],
+    install_requires=['pybind11>=2.0'],
 )
